@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Metsinanat | Software Engineering Student</title>
-    <!-- ሞዴር ፊደል ከ Google Fonts ለማምጣት -->
+
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
             --primary: #4f46e5;
@@ -22,6 +22,10 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -40,7 +44,8 @@
             background: var(--card-bg);
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05),
+                        0 8px 10px -6px rgba(0, 0, 0, 0.05);
         }
 
         nav {
@@ -49,6 +54,7 @@
             border-radius: 12px;
             display: flex;
             gap: 20px;
+            flex-wrap: wrap;
             box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
             margin-bottom: 30px;
         }
@@ -58,19 +64,11 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
-            transition: opacity 0.2s ease, transform 0.2s ease;
+            transition: color 0.2s ease;
         }
 
         nav a:hover {
-            opacity: 0.85;
-            transform: translateY(-1px);
-        }
-
-        hr {
-            border: none;
-            height: 1px;
-            background-color: #e2e8f0;
-            margin: 30px 0;
+            color: #c7d2fe;
         }
 
         h1 {
@@ -110,6 +108,28 @@
             font-size: 1.05rem;
         }
 
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            display: block;
+            margin: 15px 0 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #e2e8f0;
+            margin: 30px 0;
+        }
+
         ul {
             list-style: none;
             padding-left: 0;
@@ -133,35 +153,151 @@
             transform: translateY(-2px);
             background-color: #e2e8f0;
         }
+
+        .contact-box {
+            background-color: #f1f5f9;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 15px;
+        }
+
+        .contact-box p {
+            margin-bottom: 12px;
+        }
+
+        .contact-box a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-box a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-top: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-2px);
+            text-decoration: none !important;
+        }
+
+        footer {
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 35px;
+            padding-top: 20px;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            nav {
+                gap: 15px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
-<body>
 
+<body>
     <div class="container">
+
         <nav>
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Contact me</a>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact Me</a>
         </nav>
 
-        <h1><em>Welcome to My Website</em></h1>
+        <section id="home">
+            <h1><em>Welcome to My Website</em></h1>
+            <p>Hello! Welcome to my personal portfolio website.</p>
+        </section>
 
-        <h2>About Me</h2>
-        <p>Hello! My name is Metsinanat.</p>
-        <p>I am a Software Engineering student.</p>
-        
         <hr>
 
-        <h2>My Goals</h2>
-        <p>I want to build useful software projects.</p>
+        <section id="about">
+            <h2>About Me</h2>
 
-        <h3><b>My Hobbies</b></h3>
-        <ul>
-            <li>Reading</li>
-            <li>Playing Guitar</li>
-            <li>Watching Movies</li>
-        </ul>
+            <img src="profile.jpg" alt="Metsinanat's Profile Picture" class="profile-img">
+
+            <p>Hello! My name is Metsinanat.</p>
+            <p>I am a Software Engineering student.</p>
+
+            <hr>
+
+            <h2>My Goals</h2>
+            <p>I want to build useful software projects and improve my programming skills.</p>
+
+            <h3>My Hobbies</h3>
+
+            <ul>
+                <li>Reading</li>
+                <li>Playing Guitar</li>
+                <li>Watching Movies</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>You can contact me using the information below.</p>
+
+            <div class="contact-box">
+                <p>
+                    <strong>Email:</strong>
+                    <a href="mailto:yourname@example.com">yourname@example.com</a>
+                </p>
+
+                <p>
+                    <strong>Phone:</strong>
+                    +251 9XX XXX XXX
+                </p>
+
+                <p>Feel free to send me an email.</p>
+
+                <a class="contact-button" href="mailto:yourname@example.com">
+                    Contact Me
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Metsinanat. All rights reserved.</p>
+        </footer>
+
     </div>
-
 </body>
 </html>
