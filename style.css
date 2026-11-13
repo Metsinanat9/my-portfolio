@@ -1,27 +1,30 @@
-/* 1. Website colors */
+/* 1. Website Colors (DRY Principle - ቀለሞችን በአንድ ቦታ መቆጣጠሪያ) */
 :root {
     --primary: #4f46e5;
     --primary-dark: #4338ca;
     --bg-color: #f8fafc;
     --card-bg: #ffffff;
+    --surface-subtle: #f1f5f9;
+    --surface-hover: #e2e8f0;
+    --border-color: #e2e8f0;
     --text-main: #1e293b;
     --text-muted: #64748b;
     --accent: #0d9488;
 }
 
-/* 2. Reset */
+/* 2. Universal Reset */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* 3. Smooth scrolling */
+/* 3. Smooth Scrolling */
 html {
     scroll-behavior: smooth;
 }
 
-/* 4. Whole website */
+/* 4. Body Layout */
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     background-color: var(--bg-color);
@@ -32,7 +35,7 @@ body {
     justify-content: center;
 }
 
-/* 5. Main container */
+/* 5. Main Container */
 .container {
     width: 100%;
     max-width: 800px;
@@ -44,13 +47,9 @@ body {
         0 8px 10px -6px rgba(0, 0, 0, 0.05);
 }
 
-/* 6. Navigation */
+/* 6. Navigation Bar */
 nav {
-    background: linear-gradient(
-        135deg,
-        var(--primary),
-        var(--primary-dark)
-    );
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     padding: 18px 24px;
     border-radius: 12px;
     display: flex;
@@ -60,21 +59,19 @@ nav {
     margin-bottom: 30px;
 }
 
-/* Navigation links */
 nav a {
-    color: white;
+    color: #ffffff;
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
     transition: color 0.2s ease;
 }
 
-/* Hover effect */
 nav a:hover {
     color: #c7d2fe;
 }
 
-/* 7. Main heading */
+/* 7. Main Heading */
 h1 {
     color: var(--text-main);
     font-size: 2.2rem;
@@ -83,19 +80,14 @@ h1 {
     letter-spacing: -0.5px;
 }
 
-/* Heading gradient */
 h1 em {
     font-style: normal;
-    background: linear-gradient(
-        135deg,
-        var(--primary),
-        var(--accent)
-    );
+    background: linear-gradient(135deg, var(--primary), var(--accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-/* 8. Section headings */
+/* 8. Section Headings */
 h2 {
     color: var(--primary-dark);
     font-size: 1.4rem;
@@ -119,11 +111,13 @@ p {
     font-size: 1.05rem;
 }
 
-/* 10. Profile image */
+/* 10. Profile Image (ምስሉ ቢዘገይ ወይም ባይኖር እንኳን ቅርጹ እንዳይበላሽ background ተጨምሯል) */
 .profile-img {
     width: 150px;
     height: 150px;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
+    background-color: var(--surface-subtle);
     border-radius: 50%;
     border: 4px solid var(--primary);
     display: block;
@@ -131,134 +125,167 @@ p {
     transition: transform 0.3s ease;
 }
 
-/* Image hover */
 .profile-img:hover {
     transform: scale(1.05);
 }
 
-/* 11. Horizontal line */
+/* 11. Divider Line */
 hr {
     border: none;
     height: 1px;
-    background-color: #e2e8f0;
+    background-color: var(--border-color);
     margin: 30px 0;
 }
 
-/* 12. Hobbies list */
+/* 12. Skills Badges */
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.skill-badge {
+    background-color: var(--surface-subtle);
+    color: var(--primary);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid var(--border-color);
+}
+
+/* 13. Hobbies Grid */
 ul {
     list-style: none;
     padding-left: 0;
     display: grid;
-    grid-template-columns: repeat(
-        auto-fit,
-        minmax(180px, 1fr)
-    );
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 12px;
     margin-top: 10px;
 }
 
-/* Individual hobby */
 ul li {
-    background-color: #f1f5f9;
+    background-color: var(--surface-subtle);
     padding: 12px 18px;
     border-radius: 10px;
     font-weight: 500;
     color: var(--text-main);
     border-left: 4px solid var(--accent);
-    transition:
-        transform 0.2s ease,
-        background-color 0.2s ease;
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-/* Hobby hover */
 ul li:hover {
     transform: translateY(-2px);
-    background-color: #e2e8f0;
+    background-color: var(--surface-hover);
 }
 
-/* 13. Contact box */
+/* 14. Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 12px;
+}
+
+.project-card {
+    background-color: var(--surface-subtle);
+    padding: 20px;
+    border-radius: 12px;
+    border-top: 4px solid var(--primary);
+    transition: transform 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-3px);
+}
+
+.project-card h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.project-card p {
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+}
+
+.project-tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+/* 15. Contact Box */
 .contact-box {
-    background-color: #f1f5f9;
+    background-color: var(--surface-subtle);
     padding: 20px;
     border-radius: 12px;
     margin-top: 15px;
 }
 
-/* Contact paragraphs */
 .contact-box p {
     margin-bottom: 12px;
 }
 
-/* Contact links */
 .contact-box a {
     color: var(--primary);
     text-decoration: none;
     font-weight: 600;
 }
 
-/* Contact link hover */
 .contact-box a:hover {
     text-decoration: underline;
 }
 
-/* 14. Contact button */
+/* 16. Contact Button */
 .contact-button {
     display: inline-block;
-    background: linear-gradient(
-        135deg,
-        var(--primary),
-        var(--primary-dark)
-    );
-    color: white !important;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #ffffff !important;
     padding: 10px 20px;
     border-radius: 8px;
     margin-top: 10px;
     transition: transform 0.2s ease;
 }
 
-/* Button hover */
 .contact-button:hover {
     transform: translateY(-2px);
     text-decoration: none !important;
 }
-/* 15. Footer */
+
+/* 17. Footer */
 footer {
     text-align: center;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid var(--border-color);
     margin-top: 35px;
     padding-top: 20px;
 }
 
-/* Footer text */
 footer p {
     font-size: 0.9rem;
     margin-bottom: 0;
 }
 
-/* 16. Mobile screen design */
+/* 18. Responsive Mobile Layout */
 @media (max-width: 600px) {
-
     body {
         padding: 10px;
     }
-
     .container {
         padding: 20px;
     }
-
     nav {
         gap: 15px;
         padding: 15px;
     }
-
     h1 {
         font-size: 1.8rem;
     }
-
     h2 {
         font-size: 1.25rem;
     }
-
     p {
         font-size: 1rem;
     }
